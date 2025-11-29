@@ -59,7 +59,7 @@ export const Teams = () => {
                         </h1>
                     </header>
 
-                    <section className="px-10 py-10">
+                    <section className="lg:px-10 py-10 sm:px-0">
                         <h1 className="text-3xl font-semibold text-green-400 tracking-wide text-center">Teams List</h1>
                         {teams && teams.length > 0 ? (
                             teams.map((team, index) => (
@@ -84,7 +84,7 @@ export const Teams = () => {
             </div>
 
             {showTeamForm && (
-                <div className="fixed inset-0 bg-opacity-50 flex flex-col items-center justify-center z-50">
+                <div className="fixed inset-0 bg-opacity-50 flex flex-col items-center justify-center z-50 sm:mx-10">
                     <div className="bg-white rounded-lg p-6 shadow-lg max-w-lg w-full min-h-min">
                         <div className="flex justify-between">
                             <h2 className="text-3xl mb-4 font-semibold">Add New Team</h2>

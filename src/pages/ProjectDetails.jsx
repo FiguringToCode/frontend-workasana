@@ -49,7 +49,7 @@ export const ProjectDetails = () => {
 
                 <main className="flex-1 min-w-screen lg:min-w-[82vw] relative">
                     <header className={`bg-black bg-opacity-90 flex justify-stretch lg:justify-center p-4 border-b-2 border-pink-600`}>
-                        <button className="p-2 text-2xl lg:hidden z-10 border-2 rounded-lg border-pink-600 text-pink-600 hover:text-indigo-500 hover:border-indigo-500 transition" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                        <button className="p-2 text-2xl lg:hidden z-50 border-2 rounded-lg border-pink-600 text-pink-600 hover:text-indigo-500 hover:border-indigo-500 transition" onClick={() => setSidebarOpen(!sidebarOpen)}>
                             <GiHamburgerMenu />
                         </button>
                         <h1 className="text-3xl tracking-wider bg-linear-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-semibold ps-5">
@@ -81,10 +81,10 @@ export const ProjectDetails = () => {
             </div>
 
             {showProjectForm && (
-                <div className="fixed inset-0 bg-opacity-50 flex flex-col items-center justify-center z-50">
+                <div className="fixed inset-0 bg-opacity-50 flex flex-col items-center justify-center z-50 mx-5">
                     <div className="bg-white rounded-lg p-6 shadow-lg max-w-lg w-full min-h-min">
                         <div className="flex justify-between">
-                            <h2 className="text-3xl mb-4 font-semibold">Add New Project</h2>
+                            <h2 className="text-2xl mb-4 font-semibold">Add New Project</h2>
                             <button className="mb-4 px-2 py-1 bg-pink-600 text-white rounded cursor-pointer" onClick={() => setShowProjectForm(false)}><IoCloseCircle size={25} /></button>
                         </div>
                         <form onSubmit={handleSubmit(onProjectSubmit)}>

@@ -30,7 +30,7 @@ export const Sidebar = () => {
 
     return (
         <>
-            <div className={`fixed bg-neutral-900 bg-opacity-80 w-64 min-h-full shadow-lg shadow-purple-800 ${
+            <div className={`fixed z-40 bg-neutral-900 bg-opacity-80 w-64 min-h-full shadow-lg shadow-purple-800 ${
           sidebarOpen
             ? "translate-x-0 transition ease-in duration-200"
             : "-translate-x-64 transition ease-in duration-200"

@@ -1,8 +1,8 @@
 import { Sidebar } from "../components/Sidebar"
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import AuthContext from "../../AuthContext"
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Doughnut, Pie, Bar } from 'react-chartjs-2'
+import { Pie, Bar } from 'react-chartjs-2'
 import {
     Chart as ChartJS, 
     ArcElement,    
@@ -70,20 +70,21 @@ export const Reports = () => {
 
             <main className="flex-1 min-w-screen lg:min-w-[82vw]">
 
-                <header className="bg-black bg-opacity-90 flex justify-stretch lg:justify-center p-4 border-b-2 border-pink-600">
-                    <button className="p-2 text-2xl lg:hidden z-10 border-2 rounded-lg border-pink-600 text-pink-600 hover:text-indigo-500 hover:border-indigo-500 transition" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                <header className="bg-black bg-opacity-90 flex items-center lg:justify-center p-4 border-b-2 border-pink-600">
+                    <button className="p-2 text-2xl lg:hidden z-30 border-2 rounded-lg border-pink-600 text-pink-600 hover:text-indigo-500 hover:border-indigo-500 transition" onClick={() => setSidebarOpen(!sidebarOpen)} aria-label="Toggle sidebar">
                         <GiHamburgerMenu />
                     </button>
-                    <h1 className="text-3xl tracking-wider bg-linear-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-semibold ps-5">
+                    <h1 className="text-2xl sm:text-3xl tracking-wider bg-linear-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-semibold ps-5 ml-4">
                         Workasana Reports
                     </h1>
                 </header>
 
-                <section className="px-30 py-10">
-                    <div className="bg-white/10 p-5 shadow-lg shadow-neutral-800 rounded-lg my-5 flex flex-col justify-center items-center">
-                        <h2 className="text-gray-100 font-semibold text-2xl">Total Tasks Completed Last Week</h2>
-                        <div className="">
-                            <Pie className="my-8" data={{
+                <section className="px-4 md:px-10 py-10 space-y-10">
+
+                    <div className="bg-white/10 p-5 shadow-lg shadow-neutral-800 rounded-lg flex flex-col items-center">
+                        <h2 className="text-gray-100 font-semibold text-xl sm:text-2xl text-center">Total Tasks Completed Last Week</h2>
+                        <div className="w-full max-w-md sm:max-w-lg">
+                            <Pie data={{
                                 labels: totalTasks?.map(data => data.label),
                                 datasets: [
                                     {
@@ -93,13 +94,14 @@ export const Reports = () => {
                                         borderWidth: 2
                                     }
                                 ]
-                            }} />
+                            }} options={{ maintainAspectRatio: true, responsive: true }} />
                         </div>
                     </div>
-                    <div className="bg-white/10 py-10 shadow-lg shadow-neutral-800 rounded-lg my-10 flex flex-col justify-center items-center">
-                        <h2 className="text-gray-100 font-semibold text-2xl">Total Time Pending</h2>
-                        <div className="">
-                            <Bar style={{ width: '700px', height: '400px' }} className="my-8" data={{
+
+                    <div className="bg-white/10 py-10 shadow-lg shadow-neutral-800 rounded-lg flex flex-col items-center">
+                        <h2 className="text-gray-100 font-semibold text-xl sm:text-2xl text-center mb-2">Total Time Pending</h2>
+                        <div className="w-full max-w-full overflow-x-auto">
+                            <Bar data={{
                                 labels: Object.keys(taskTimeObject || {}),
                                 datasets: [
                                     {
@@ -108,26 +110,17 @@ export const Reports = () => {
                                         backgroundColor: "rgba(106, 90, 205, 0.8)",
                                     }
                                 ]
-                            }} />
+                            }} options={{ maintainAspectRatio: false, responsive: true, scales: { x: {ticks: { maxRotation: 90, minRotation: 45 },}, y: { beginAtZero: true, }, },}} height={350} />
                         </div>
                     </div>
-                    <div className="bg-white/10 py-10 shadow-lg shadow-neutral-800 rounded-lg my-10 flex flex-col justify-center items-center">
-                        <h2 className="text-gray-100 font-semibold text-2xl">Team vs Task Status</h2>
-                        <div className="">
-                            <Bar style={{ width: '700px', height: '400px' }} className="my-8" data={{
+
+                    <div className="bg-white/10 p-5 shadow-lg shadow-neutral-800 rounded-lg flex flex-col items-center">
+                        <h2 className="text-gray-100 font-semibold text-xl sm:text-2xl text-center mb-2">Team vs Task Status</h2>
+                        <div className="w-full max-w-full overflow-x-auto">
+                            <Bar data={{
                                 labels: teamNames,
                                 datasets: datasets
-                            }} options={{
-                                scales: {
-                                    x: {
-                                        stacked: true,
-                                    },
-                                    y: {
-                                        stacked: true,
-                                        beginAtZero: true
-                                    }
-                                }
-                            }} />
+                            }} options={{ maintainAspectRatio: false, responsive: true, scales: { x: {stacked: true, ticks: { maxRotation: 90, minRotation: 45 },}, y: { stacked: true, beginAtZero: true,},},}} height={350} />
                         </div>
                     </div>
                 </section>

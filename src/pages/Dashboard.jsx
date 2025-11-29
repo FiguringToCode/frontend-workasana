@@ -67,7 +67,7 @@ export const Dashboard = () => {
                 >
                     <GiHamburgerMenu />
                 </button>
-                <h1 className="text-3xl tracking-wider bg-linear-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-semibold ps-5">
+                <h1 className="text-3xl z-50 tracking-wider bg-linear-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent font-semibold ps-5">
                     Dashboard
                 </h1>
                 <div className="bg-linear-to-r from-pink-600 via-purple-600 to-indigo-600 w-20 py-1 text-center rounded-lg shadow-lg">
