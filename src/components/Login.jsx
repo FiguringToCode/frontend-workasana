@@ -85,7 +85,7 @@ export const Login = () => {
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute top-2.5 right-2 text-gray-400 hover:text-pink-600 transition"
+              className="absolute top-9 -right-5 text-gray-400 hover:text-pink-600 transition"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? (
